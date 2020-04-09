@@ -1,0 +1,92 @@
+@page:last {
+    @bottom-center {
+        content: "footer";
+    }
+}
+
+/*@page {
+       @top-center    { content: element(header); }
+       @bottom-center { content: element(footer); }
+     }*/
+body{
+    font-family: "Garuda"; font-size: 6pt;
+}
+.table_bordered{
+    border: 1px solid #000; margin-bottom: 10px;
+}
+.table_bordered td{
+    border:0.5px solid #000; padding: 3px;
+}
+.table_nonborder td{
+    border:0px solid #000; padding: 3px;
+}
+
+
+p {	margin: 0pt; }
+
+table {
+  display: block;
+  height: 1000px;
+  overflow-y: scroll;
+}
+table.items {
+    border: 0.1mm solid #009966;
+}
+td { vertical-align: top; }
+.items td {
+    border-left: 0.1mm solid #009966;
+    border-right: 0.1mm solid #009966;
+}
+table thead td { background-color: #f0fff0;
+                 text-align: center;
+                 border: 0.1mm solid #009966;
+                 font-variant: small-caps;
+}
+table tfoot td { background-color: #f0fff0;
+                 text-align: center;
+                 border: 0.1mm solid #009966;
+                 font-variant: small-caps;
+}
+.items td.blanktotal {
+    background-color: #EEEEEE;
+    border: 0.1mm solid #009966;
+    background-color: #FFFFFF;
+    border: 0mm none #009966;
+    border-top: 0.1mm solid #009966;
+    border-right: 0.1mm solid #009966;
+}
+.items td.totals {
+    text-align: right;
+    border: 0.1mm solid #009966;
+    font-weight: bold;
+}
+
+.items td.info{
+    font-family: "Garuda"; 
+    font-size: 6pt;
+}
+
+.box-right{
+    position: absolute;
+    right: 30px;
+    width: 300px;
+    padding: 10px;
+    font-size: 10pt;
+    font-family: "Garuda";
+    /*border: 3px solid #1575be;*/
+}
+table.address{
+    font-size: 9pt;
+    font-family: "Garuda"
+}
+.address td{
+    line-height: 1.6;
+}
+
+.breakline { clear:both;}
+
+h2 {
+  text-align: center;
+}
+
+

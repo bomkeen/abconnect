@@ -11,7 +11,7 @@ use yii\helpers\ArrayHelper;
 
 include_once '../inc/thaidate.php';
 $this->title = 'รายงานการแบ่งเงิน';
-//$this->params['breadcrumbs'][] = ['label' => 'Setting', 'url' => ['/setting/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Report', 'url' => ['/report/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php
@@ -26,10 +26,20 @@ Modal::end();
 ?>
 
 
+</style>
 <div class="report-profitforyou">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <div class="row">
+         <div class="col-md-3">
+            <div class="card border-info mx-sm-1 p-3">
+                <div class="card border-info shadow text-info p-3 my-card" ><span class="fa fa-car" aria-hidden="true"></span></div>
+                <div class="text-info text-center mt-3"><h4>Cars</h4></div>
+                <div class="text-info text-center mt-2"><h1>234</h1></div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-3">
             <div class="well-lg">
@@ -88,11 +98,11 @@ Modal::end();
                         'format' => 'raw',
                     ],
                     [
-                        'label' => 'status',
+                        'label' => 'Pay',
                         'attribute' => 'status',
 //                        'filter' => ArrayHelper::map(\app\models\Customer::find()->all(), 'customer_id', 'customer_name'), //กำหนด filter แบบ dropDownlist จากข้อมูล ใน field แบบ foreignKey
                         'value' => function ($model, $key, $index, $widget) {
-                            return $model->status == 'y' ? "<span style=\"color:green;\">YES</span>" : "<span style=\"color:red;\">รอการชำระเงิน</span>";
+                            return $model->status == 'y' ? "<span style=\"color:green;\">ชำระเงินแล้ว</span>" : "<span style=\"color:red;\">รอการชำระเงิน</span>";
                         },
                         'width' => '20%',
                         'filterWidgetOptions' => [

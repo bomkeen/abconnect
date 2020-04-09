@@ -152,11 +152,11 @@ Modal::end();
                         'format' => 'raw',
                     ],
                     [
-                        'label' => 'status',
+                        'label' => 'Pay',
                         'attribute' => 'status',
 //                        'filter' => ArrayHelper::map(\app\models\Customer::find()->all(), 'customer_id', 'customer_name'), //กำหนด filter แบบ dropDownlist จากข้อมูล ใน field แบบ foreignKey
                         'value' => function ($model, $key, $index, $widget) {
-                            return $model->status == 'y' ? "<span style=\"color:green;\">YES</span>" : "<span style=\"color:red;\">รอการชำระเงิน</span>";
+                            return $model->status == 'y' ? "<span style=\"color:green;\">ชำระเงินแล้ว</span>" : "<span style=\"color:red;\">รอการชำระเงิน</span>";
                         },
                         'width' => '20%',
                         'filterWidgetOptions' => [

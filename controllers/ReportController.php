@@ -32,7 +32,7 @@ class ReportController extends \yii\web\Controller {
             return $this->redirect(Yii::$app->request->referrer);
         }
 
-        return $this->renderAjax('updateprofitstatus', [
+        return $this->renderAjax('_updateprofitstatus', [
             'model' => $model,
         ]);
         

@@ -12,12 +12,12 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    
+ <?= $form->field($model, 'profit_status')->radioList(array('0'=>'รอแบ่ง','1'=>'แบ่งแล้ว')); ?>   
 <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
  
-       <?= $form->field($model, 'profit_status')->textInput(['maxlength' => true]) ?>
+       
     <?php ActiveForm::end(); ?>
 
 </div>

@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
  
-       <?= $form->field($model, 'waranty')->textInput(['maxlength' => true]) ?>
+       <?= $form->field($model, 'profit_status')->textInput(['maxlength' => true]) ?>
     <?php ActiveForm::end(); ?>
 
 </div>

@@ -33,7 +33,7 @@ Modal::end();
     <div class="row">
         <div class="col-md-3">
             <div class="well-lg">
-            
+
 
             </div>
         </div>
@@ -74,7 +74,6 @@ Modal::end();
                         'vAlign' => 'middle',
                         'format' => 'raw',
                     ],
-                    
                     [
                         'label' => 'Jobs Date',
                         'attribute' => 'job_date',
@@ -103,7 +102,7 @@ Modal::end();
                         'hAlign' => 'center',
                         'format' => 'html',
                     ],
-                                [
+                    [
                         'label' => 'แบ่งเงิน',
                         'attribute' => 'profit_status',
 //                        'filter' => ArrayHelper::map(\app\models\Customer::find()->all(), 'customer_id', 'customer_name'), //กำหนด filter แบบ dropDownlist จากข้อมูล ใน field แบบ foreignKey
@@ -118,7 +117,23 @@ Modal::end();
                         'hAlign' => 'center',
                         'format' => 'html',
                     ],
-             
+                 
+                    [
+                        'class' => 'kartik\grid\ActionColumn',
+                        'template' => ' {update} ',
+                        'header' => 'update',
+                        'urlCreator' => function($action, $model, $key, $index) {
+
+                            return Url::toRoute(['report/updateprofitstatus', 'id' => $model->job_id]);
+                        },
+                        'buttons' => [
+                            'update' => function ($url, $model) {
+                                return Html::button('<i class="glyphicon glyphicon-pencil"></i>'
+                                                , ['value' => Url::to($url),
+                                            'class' => 'edit-jobdetail btn btn-warning']);
+                            },
+                        ],
+                    ],
                 ];
                 echo GridView::widget([
                     'dataProvider' => $dataProvider,

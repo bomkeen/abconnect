@@ -23,13 +23,11 @@ class ReportController extends \yii\web\Controller {
     public function actionUpdateprofitstatus($id) {
                 
 //        $model = $this->findModel($id);
-        $model=JobDetailList::find()->where(['job_detail_id' => $id])->one();
+        $model=Job::find()->where(['job_id' => $id])->one();
 
         if ($model->load(Yii::$app->request->post()) ) {
-            
-            $model->job_detail_id=$id;
-            $model->user_update=@Yii::$app->user->identity->id;
-            $model->save();
+        
+            $model->update();
 //            return $this->redirect(['view', 'id' => $model->job_detail_list_id]);
             return $this->redirect(Yii::$app->request->referrer);
         }

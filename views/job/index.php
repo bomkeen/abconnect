@@ -84,6 +84,47 @@ Modal::end();
                         'format' => 'raw',
                     ],
                     [
+                        'class' => 'kartik\grid\ExpandRowColumn',
+                        'width' => '50px',
+                        'hAlign' => 'center',
+//                            'header' => ['class' => 'kartik-sheet-style'],
+                        'enableRowClick' => TRUE,
+                        'expandTitle' => 'ข้อมูลเพิ่มเติม',
+                        'expandAllTitle' => 'ข้อมูลเพิ่มเติม',
+                        'expandIcon' => '<span class="glyphicon glyphicon-hand-down"></span>',
+                        'value' => function ($model, $key, $index, $column) {
+                            return GridView::ROW_COLLAPSED;
+                        },
+                        'detail' => function ($model, $key, $index, $column) {
+                            return //'hello world';//Yii::$app->controller->renderPartial('_expand-row-details', ['model'=>$model]);
+                                    '
+                  <div class="col-md-12">
+                  <table class="table table-striped">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                      <tr>
+                      <th class="col-md-3"><span ></span><b>ทุนรวม</b></th>
+                      <th class="col-md-3"><span ></span><b>VAT</b></th>
+                        <th class="col-md-3"><span ></span><b>กำไรโดยประมาณ</b></th>
+                        
+                      </tr>
+                      <tr>
+                        <td class="col-md-3">' . $model->total_cost . '</td>
+                        <td class="col-md-3">' . $model->total_vat . '</td>
+                            <td class="col-md-3">' . $model->total_profit . '</td>   
+                       
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div>
+                  ';
+                        },
+                        'headerOptions' => ['class' => 'kartik-sheet-style'],
+                        'expandOneOnly' => true
+                    ],
+                    [
                         'label' => 'ลูกค้า',
                         'attribute' => 'customer_name',
                         'filter' => ArrayHelper::map(\app\models\Customer::find()->all(), 'customer_id', 'customer_name'), //กำหนด filter แบบ dropDownlist จากข้อมูล ใน field แบบ foreignKey

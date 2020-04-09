@@ -74,10 +74,12 @@ class JobDetailController extends Controller
             $model->save();
         $sumcost = JobDetail::find()->where(['job_id' => $id])->sum('total_cost');
         $sumprice=JobDetail::find()->where(['job_id' => $id])->sum('total_price');
-        $profit=$sumprice-$sumcost;
+         $sumvat = (($sumprice-(($sumprice*60)/100))*7)/100 ;
+        $profit = ($sumprice - $sumcost)-$sumvat;
         $updatecost = Job::findOne($id);
         $updatecost->total_cost = $sumcost;
         $updatecost->total_price = $sumprice;
+        $updatecost->total_vat=$sumvat;
         $updatecost->total_profit=$profit;
         $updatecost->update();
             return $this->redirect(Yii::$app->request->referrer);

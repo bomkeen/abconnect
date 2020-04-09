@@ -36,7 +36,7 @@ class Job extends \yii\db\ActiveRecord
         return [
             [['job_date','job_name','customer_id'], 'required'],
             [['customer_id','user_create','user_update'], 'integer'],
-            [['total_cost', 'total_profit','total_price'], 'number'],
+            [['total_cost', 'total_profit','total_price','total_vat'], 'number'],
             [['job_date', 'job_update_date','doc_num'], 'safe'],
             [['job_name', 'etc','status'], 'string', 'max' => 255],
         ];
@@ -55,6 +55,7 @@ class Job extends \yii\db\ActiveRecord
             'customer'=>'ลูกค้า',
             'total_price'=>'ราคาขายรวม',
             'total_cost' => 'ต้นทุนรวม',
+            'total_vat'=>'ภาษีรวม',
             'total_profit' => 'กำไรโดยประมาณ',
             'job_date' => 'วันที่ทำรายการ',
             'job_update_date' => 'Job Update Date',

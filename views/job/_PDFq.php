@@ -124,9 +124,7 @@ use yii\web\JsExpression;
                 echo " <tr><td></td><td></td><td></td><td></td></tr>";
             }
             ?>
-            
-
-
+           
         </tbody>
         <tfoot>
             <tr>

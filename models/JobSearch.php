@@ -20,7 +20,7 @@ class JobSearch extends Job {
         return [
             [['job_id', 'customer_id','user_create','user_update','status'], 'integer'],
             [['job_name', 'etc', 'job_date', 'job_update_date', 'customer'], 'safe'],
-            [['total_cost', 'total_profit','total_price'], 'number'],
+            [['total_cost', 'total_profit','total_price','total_vat'], 'number'],
         ];
     }
 
@@ -66,6 +66,7 @@ class JobSearch extends Job {
             'job_id' => $this->job_id,
             'customer_id' => $this->customer_id,
             'total_cost' => $this->total_cost,
+            'total_vat'=>$this->total_vat,
             'total_profit' => $this->total_profit,
             'job_date' => $this->job_date,
             'job_update_date' => $this->job_update_date,

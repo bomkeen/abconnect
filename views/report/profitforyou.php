@@ -10,7 +10,7 @@ use yii\widgets\Pjax;
 use yii\helpers\ArrayHelper;
 
 include_once '../inc/thaidate.php';
-$this->title = 'ใบงาน';
+$this->title = 'รายงานการแบ่งเงิน';
 //$this->params['breadcrumbs'][] = ['label' => 'Setting', 'url' => ['/setting/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -26,23 +26,14 @@ Modal::end();
 ?>
 
 
-<div class="customer-index">
+<div class="report-profitforyou">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <div class="row">
         <div class="col-md-3">
             <div class="well-lg">
-                <p>
-                    <?php
-//                    Html::a('Create Job Detail', ['create'], ['class' => 'btn btn-success create-job']) 
-                    echo Html::button('เพิ่มข้อมูล', [
-                        'id' => 'create-job',
-                        'value' => \yii\helpers\Url::to(['job/create'])
-                        , 'class' => 'btn btn-lg  btn-success createmodal'])
-                    ?>
-
-                </p>
+            
 
             </div>
         </div>
@@ -76,61 +67,6 @@ Modal::end();
                         'value' => function ($model, $key, $index, $widget) {
                             return $model->job_name;
                         },
-                        'width' => '40%',
-                        'filterWidgetOptions' => [
-                            'showDefaultPalette' => false,
-                        ],
-                        'vAlign' => 'middle',
-                        'format' => 'raw',
-                    ],
-                    [
-                        'class' => 'kartik\grid\ExpandRowColumn',
-                        'width' => '50px',
-                        'hAlign' => 'center',
-//                            'header' => ['class' => 'kartik-sheet-style'],
-                        'enableRowClick' => TRUE,
-                        'expandTitle' => 'ข้อมูลเพิ่มเติม',
-                        'expandAllTitle' => 'ข้อมูลเพิ่มเติม',
-                        'expandIcon' => '<span class="glyphicon glyphicon-hand-down"></span>',
-                        'value' => function ($model, $key, $index, $column) {
-                            return GridView::ROW_COLLAPSED;
-                        },
-                        'detail' => function ($model, $key, $index, $column) {
-                            return //'hello world';//Yii::$app->controller->renderPartial('_expand-row-details', ['model'=>$model]);
-                                    '
-                  <div class="col-md-12">
-                  <table class="table table-striped">
-                    <thead>
-
-                    </thead>
-                    <tbody>
-                      <tr>
-                      <th class="col-md-3"><span ></span><b>ทุนรวม</b></th>
-                      <th class="col-md-3"><span ></span><b>VAT</b></th>
-                        <th class="col-md-3"><span ></span><b>กำไรโดยประมาณ</b></th>
-                        
-                      </tr>
-                      <tr>
-                        <td class="col-md-3">' . $model->total_cost . '</td>
-                        <td class="col-md-3">' . $model->total_vat . '</td>
-                            <td class="col-md-3">' . $model->total_profit . '</td>   
-                       
-                      </tr>
-                    </tbody>
-                  </table>
-                  </div>
-                  ';
-                        },
-                        'headerOptions' => ['class' => 'kartik-sheet-style'],
-                        'expandOneOnly' => true
-                    ],
-                    [
-                        'label' => 'ลูกค้า',
-                        'attribute' => 'customer_name',
-                        'filter' => ArrayHelper::map(\app\models\Customer::find()->all(), 'customer_id', 'customer_name'), //กำหนด filter แบบ dropDownlist จากข้อมูล ใน field แบบ foreignKey
-                        'value' => function ($model, $key, $index, $widget) {
-                            return $model->customer->customer_name;
-                        },
                         'width' => '30%',
                         'filterWidgetOptions' => [
                             'showDefaultPalette' => false,
@@ -138,6 +74,7 @@ Modal::end();
                         'vAlign' => 'middle',
                         'format' => 'raw',
                     ],
+                    
                     [
                         'label' => 'Jobs Date',
                         'attribute' => 'job_date',
@@ -166,28 +103,22 @@ Modal::end();
                         'hAlign' => 'center',
                         'format' => 'html',
                     ],
-                    [
-                        'label' => 'edit',
+                                [
+                        'label' => 'แบ่งเงิน',
+                        'attribute' => 'profit_status',
+//                        'filter' => ArrayHelper::map(\app\models\Customer::find()->all(), 'customer_id', 'customer_name'), //กำหนด filter แบบ dropDownlist จากข้อมูล ใน field แบบ foreignKey
+                        'value' => function ($model, $key, $index, $widget) {
+                            return $model->profit_status == 1 ? "<span style=\"color:green;\">YES</span>" : "<span style=\"color:red;\">ยังไม่ได้แบ่ง</span>";
+                        },
+                        'width' => '20%',
+                        'filterWidgetOptions' => [
+                            'showDefaultPalette' => false,
+                        ],
                         'vAlign' => 'middle',
                         'hAlign' => 'center',
-                        'format' => 'raw',
-                        'value' => function ($data) {
-                            return Html::a('', ['job/edit', 'id' => $data['job_id']], ['target' => '_blank', 'class' => 'btn btn-success glyphicon glyphicon-plus']);
-                        }],
-                    [
-                        'class' => 'kartik\grid\ActionColumn',
-                        'template' => '{delete}',
-                        'header' => 'del',
-                        'buttons' => [
-                            'delete' => function ($url, $model) {
-                                return Html::a('<span class="glyphicon glyphicon-trash btn btn-danger"></span>', $url, [
-                                            'title' => Yii::t('app', 'lead-delete'), 'data-method' => 'post'
-                                            , 'data-confirm' => "ต้องการลบรายกาใช่หรือไม่?",
-                                ]);
-                            },
-                        ],
+                        'format' => 'html',
                     ],
-                                    
+             
                 ];
                 echo GridView::widget([
                     'dataProvider' => $dataProvider,

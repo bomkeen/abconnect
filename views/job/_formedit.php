@@ -40,11 +40,15 @@ use kartik\date\DatePicker;
             )
             ?>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
 <?= $form->field($model, 'total_cost')->textInput() ?> 
         </div>
+        
         <div class="col-md-2">
 <?= $form->field($model, 'total_price')->textInput() ?> 
+        </div>
+        <div class="col-md-1">
+<?= $form->field($model, 'total_vat')->textInput() ?> 
         </div>
         <div class="col-md-2">
 <?= $form->field($model, 'total_profit')->textInput() ?> 

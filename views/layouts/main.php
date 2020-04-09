@@ -42,7 +42,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'job', 'url' => ['/job'], 'visible' => @Yii::$app->user->identity->role=='Admin'],
-//            ['label' => 'Report', 'url' => ['/report'], 'visible' => @Yii::$app->user->identity->role=='Admin'],
+            ['label' => 'Report', 'url' => ['/report'], 'visible' => @Yii::$app->user->identity->role=='Admin'],
 //            ['label' => 'job detail', 'url' => ['/job-detail'], 'visible' => @Yii::$app->user->identity->role=='Admin'],
             Yii::$app->user->isGuest ?
 //            Yii::$app->user->identity->id

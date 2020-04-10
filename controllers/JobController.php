@@ -15,13 +15,41 @@ use wbraganca\dynamicform\DynamicFormWidget;
 //use Mpdf\Mpdf;
 use kartik\mpdf\Pdf;
 
+use yii\filters\AccessControl;
+
 include_once '../inc/thaidate.php';
 
 class JobController extends Controller {
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+//                'only' => ['index'],
+                'rules' => [
+                 
+                    [
+                        'allow' => true,
+                        'actions' => ['index','view','updatecost','edit','editdetail','deletedetail','create','delete'
+                            ,'pdfq','pdfinvoice'],
+                        'roles' => ['Admin'],
+                    ],
+                ],
+            ],
+            
+        ];
+    }
 
     public function actionIndex() {
         $searchModel = new JobSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->query->orderBy(['job_id' => SORT_DESC]);
         return $this->render('index', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,

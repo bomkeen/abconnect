@@ -18,7 +18,7 @@ class SettingController extends \yii\web\Controller
             ],
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index'],
+//                'only' => ['index'],
                 'rules' => [
                  
                     [

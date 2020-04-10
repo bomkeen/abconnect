@@ -31,7 +31,7 @@ Modal::end();
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-  
+  <?php if($total_profit>0){ ?>
     <div class="panel-body">
             <div class="row">
 
@@ -47,6 +47,7 @@ Modal::end();
 
             </div>
         </div>
+  <?php } ?>
     <div class="container container-fluid">
         <div class="row">
             <div class="col-md-12">

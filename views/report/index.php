@@ -8,19 +8,51 @@
             <?php echo 'เข้าระบบโดย :: ' . Yii::$app->user->identity->fullname;
             ?>
         </div>
+        <?php if(@Yii::$app->user->identity->id==55){ ?>
+        
         <div class="panel-body">
             <div class="row">
 
-                <div class="col-xs-12 col-md-12">
-                    <a href="#" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>Apps</a>
-                    <a href="#" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>Bookmarks</a>
-                    <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>Reports</a>
-                    <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Comments</a>
+                <div class="col-xs-3 col-md-offset-2  col-md-2">
+                    <a href="#" class="btn btn-danger btn-lg" role="button">
+                        <span class="glyphicon glyphicon-piggy-bank">
+
+                        </span> <br/><?php echo $total_vat ;?><br/>ภาษีสะสม</a>
+                </div>
+                <div class="col-xs-3 col-md-2">
+                    <a href="#" class="btn btn-warning btn-lg" role="button">
+                        <span class="glyphicon glyphicon-bookmark"></span> <br/><?php echo $total_cost ; ?><br/>ทุนรวม</a>
+                </div>
+                <div class="col-xs-3 col-md-2">
+                        <a href="#" class="btn btn-primary btn-lg" role="button">
+                        <span class="glyphicon glyphicon-signal"></span><br/> <?php echo $total_profit ;?> <br/>กำไรสะสม</a>
+                    
+                </div>
+                <div class="col-md-4  col-xs-6">
+                    <form class="form-inline"id="form1" name="form1" method="post" >
+
+                        <select class="form-control" name="year" id="year">
+                            <?php
+                            $list = date('Y');
+                            for ($i = 0; $i <= 5; $i++) {
+                                $l = $list - $i;
+                                $th = $l + 543;
+                                ?>
+                                <option value="<?= $l; ?>"  <?php if ($l == $y) echo 'selected'; ?> >ข้อมูลของปี <?= $th; ?></option>
+                            <?php } ?>
+
+                        </select>
+                     
+                        <input type="hidden" name="form1" id="form1" value="true" />
+                        <input class="btn btn-success" type="submit" name="Submit" value="แสดงข้อมูล" />
+                    </form>
                 </div>
 
 
             </div>
         </div>
+        
+        <?php } ?>
         <!--        <div class="panel-footer text-right">
                     <h5>bomkeen dev 2018</h5>
                 </div>-->

@@ -31,23 +31,22 @@ Modal::end();
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="row">
-         <div class="col-md-3">
-            <div class="card border-info mx-sm-1 p-3">
-                <div class="card border-info shadow text-info p-3 my-card" ><span class="fa fa-car" aria-hidden="true"></span></div>
-                <div class="text-info text-center mt-3"><h4>Cars</h4></div>
-                <div class="text-info text-center mt-2"><h1>234</h1></div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="well-lg">
+  
+    <div class="panel-body">
+            <div class="row">
+
+                <div class="col-xs-10 col-md-offset-4 col-xs-offset-1 col-md-4">
+                    <a href="#" class="btn btn-block btn-primary btn-lg" role="button">
+                        <span class="glyphicon glyphicon-btc">
+
+                        </span> <br/><?php echo $total_profit ;?><br/>กำไรรอการแบ่ง โดยประมาณ</a>
+                </div>
+              
+             
 
 
             </div>
         </div>
-    </div>
     <div class="container container-fluid">
         <div class="row">
             <div class="col-md-12">

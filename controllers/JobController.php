@@ -88,6 +88,12 @@ class JobController extends Controller {
             $this->actionUpdatecost($job_id);
             $model->user_update = @Yii::$app->user->identity->id;
             $model->doc_num = (date('Y') + 543) . '00' . $model->job_id;
+            if($model->status=='y'){
+                $model->status_date=date('Y/m/d');
+            }
+            if($model->status=='n'){
+                $model->status_date=NULL;
+            }
             $model->save();
             return $this->redirect(Yii::$app->request->referrer);
         }

@@ -19,7 +19,7 @@ class JobSearch extends Job {
     public function rules() {
         return [
             [['job_id', 'customer_id','user_create','user_update','status','profit_status'], 'integer'],
-            [['job_name', 'etc', 'job_date', 'job_update_date', 'customer'], 'safe'],
+            [['job_name', 'etc', 'job_date', 'job_update_date', 'customer','status_date'], 'safe'],
             [['total_cost', 'total_profit','total_price','total_vat'], 'number'],
         ];
     }
@@ -74,6 +74,7 @@ class JobSearch extends Job {
             'user_create'=>$this->user_create,
             'user_update'=>  $this->user_update,
             'total_price'=> $this->total_price,
+            'status_date'=> $this->status_date,
             'status'=>$this->status
         ]);
 

@@ -108,12 +108,14 @@ Modal::end();
                       <th class="col-md-3"><span ></span><b>ทุนรวม</b></th>
                       <th class="col-md-3"><span ></span><b>VAT</b></th>
                         <th class="col-md-3"><span ></span><b>กำไรโดยประมาณ</b></th>
+                        <th class="col-md-3"><span ></span><b>Pay Date</b></th>
                         
                       </tr>
                       <tr>
                         <td class="col-md-3">' . $model->total_cost . '</td>
                         <td class="col-md-3">' . $model->total_vat . '</td>
-                            <td class="col-md-3">' . $model->total_profit . '</td>   
+                            <td class="col-md-3">' . $model->total_profit . '</td>  
+                                <td class="col-md-3">' . $model->status_date . '</td>  
                        
                       </tr>
                     </tbody>

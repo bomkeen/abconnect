@@ -12,7 +12,7 @@ use kartik\widgets\Select2;
         'options' => ['name' => 'fdetail']
     ]); ?>
     <?= $form->field($model, 'job_detail')->textInput()->label('รายการสินค้า') ?>
-    <?= $form->field($model, 'product_detail')->textInput()->label('รายละเอียดเพิ่มเติม') ?>
+    <?= $form->field($model, 'product_detail')->textInput()->label('link สินค้า') ?>
     <div class="row">
         <div class="col-md-4">
             <?= $form->field($model, 'cost')->textInput(['id'=>'detail-cost'])->label('ต้นทุน') ?>

@@ -96,6 +96,15 @@ Modal::end();
                             return GridView::ROW_COLLAPSED;
                         },
                         'detail' => function ($model, $key, $index, $column) {
+                            if ($model->status == 'n') {
+                                $model->status_date = 'ยังไม่จ่าย';
+                            } elseif ($model->status_date == '') {
+                                $model->status_date = 'ยังไม่อัพเดท';
+                            } elseif ($model->status_date == '0000-00-00') {
+                                $model->status_date = 'ยังไม่อัพเดท';
+                            } else {
+                                $model->status_date = thaidate($model->status_date);
+                            }
                             return //'hello world';//Yii::$app->controller->renderPartial('_expand-row-details', ['model'=>$model]);
                                     '
                   <div class="col-md-12">
@@ -115,7 +124,7 @@ Modal::end();
                         <td class="col-md-3">' . $model->total_cost . '</td>
                         <td class="col-md-3">' . $model->total_vat . '</td>
                             <td class="col-md-3">' . $model->total_profit . '</td>  
-                                <td class="col-md-3">' . $model->status_date . '</td>  
+                            <td class="col-md-3">' . $model->status_date . '</td>  
                        
                       </tr>
                     </tbody>
@@ -189,7 +198,6 @@ Modal::end();
                             },
                         ],
                     ],
-                                    
                 ];
                 echo GridView::widget([
                     'dataProvider' => $dataProvider,

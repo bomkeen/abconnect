@@ -37,7 +37,7 @@ class JobController extends Controller {
                     [
                         'allow' => true,
                         'actions' => ['index','view','updatecost','edit','editdetail','deletedetail','create','delete'
-                            ,'pdfq','pdfinvoice'],
+                            ,'pdfq','pdfinvoice','pdfdeliver'],
                         'roles' => ['Admin'],
                     ],
                 ],
@@ -185,6 +185,27 @@ class JobController extends Controller {
         $job = Job::find()->where(['job_id' => $id])->one();
         $cus = Customer::find()->where(['customer_id' => $job->customer_id])->one();
         $content = $this->renderPartial('_PDFq', [
+            'model' => $model,
+            'job' => $job,
+            'cus' => $cus,
+        ]);
+        $pdf = new Pdf([
+            'mode' => Pdf::MODE_UTF8,
+            'defaultFont' => 'Garuda',
+        ]); // or new Pdf();
+        $mpdf = $pdf->api; // fetches mpdf api
+        $mpdf->SetDisplayMode('fullwidth');
+        $mpdf->SetWatermarkImage('../img/logo.png');
+        $mpdf->showWatermarkImage = true;
+//        $mpdf->SetHeader('Kartik Header'); // call methods or set any properties
+        $mpdf->WriteHtml($content); // call mpdf write html
+        echo $mpdf->Output('abconnect_quotation_' . $job->job_name . '_' . date('Y/m/d') . '.pdf', 'I'); // call the mpdf api output as needed
+    }
+     public function actionPdfdeliver($id) {
+        $model = JobDetail::find()->where(['job_id' => $id])->all();
+        $job = Job::find()->where(['job_id' => $id])->one();
+        $cus = Customer::find()->where(['customer_id' => $job->customer_id])->one();
+        $content = $this->renderPartial('_PDFdeliver', [
             'model' => $model,
             'job' => $job,
             'cus' => $cus,

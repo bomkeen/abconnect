@@ -124,7 +124,9 @@ use yii\web\JsExpression;
                 echo " <tr><td></td><td></td><td></td><td></td></tr>";
             }
             ?>
-           
+           <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <font color='red'>***<i>รายการนี้รวมภาษีมูลค่าเพิ่มแล้ว</i></font>
+    </td><td></td><td></td><td></td></tr>
         </tbody>
         <tfoot>
             <tr>

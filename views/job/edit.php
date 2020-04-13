@@ -50,6 +50,7 @@ Modal::end();
 <div class="well well-sm">
     <?= Html::a('พิมพ์ใบเสร็จรับเงิน', ['pdfinvoice', 'id' => $model->job_id], ['class' => 'btn btn-info']) ?>
     <?= Html::a('พิมพ์ใบเสอราคา', ['pdfq', 'id' => $model->job_id], ['class' => 'btn btn-success']) ?>
+    <?= Html::a('พิมพ์ใบส่งสินค้า', ['pdfdeliver', 'id' => $model->job_id], ['class' => 'btn btn-primary']) ?>
 
 </div>
 <div class="row">

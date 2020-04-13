@@ -75,6 +75,15 @@ table tfoot td { background-color: #acd7f7;
     font-family: "Garuda";
     /*border: 3px solid #1575be;*/
 }
+.box-left{
+    position: absolute;
+    left: 30px;
+    width: 300px;
+    padding: 10px;
+    font-size: 10pt;
+    font-family: "Garuda";
+    /*border: 3px solid #1575be;*/
+}
 table.address{
     font-size: 9pt;
     font-family: "Garuda"

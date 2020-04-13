@@ -123,7 +123,9 @@ use yii\web\JsExpression;
             }
             ?>
             ?>
-
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <font color='red'>***<i>รายการนี้รวมภาษีมูลค่าเพิ่มแล้ว</i></font>
+    </td><td></td><td></td><td></td></tr>
 
         </tbody>
         <tfoot>
@@ -143,11 +145,19 @@ use yii\web\JsExpression;
         
         <br/>
     <div class="box-right">
-        <p style="text-align: center ">อนุมัติโดย</p>
+        <p style="text-align: center ">ผู้รับเงิน</p>
       <br/>
         <p style="text-align: center">..................................</p>
         <br/>
-        <p style="text-align: center"> <?php echo "นาย ". Yii::$app->user->identity->fullname ?></p>
+        <p style="text-align: center"> <?php echo "นาย พีรกาจ พูลสวัสดิ์" ; ?></p>
+
+    </div>
+         <div class="box-left">
+        <p style="text-align: center ">ผู้จ่ายเงิน</p>
+      <br/>
+        <p style="text-align: center">..................................</p>
+        <br/>
+        <p style="text-align: center"> <?php echo "(........................................)" ; ?></p>
 
     </div>
 
